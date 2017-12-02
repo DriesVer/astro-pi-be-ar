@@ -1,4 +1,4 @@
-#import libraries -----------------------------------------------------------------------------------------------------------------------------------------------------
+import libraries -----------------------------------------------------------------------------------------------------------------------------------------------------
 from PIL import Image
 from time import sleep
 
@@ -17,7 +17,9 @@ def resizeImage(img):
 	return img;
 
 #set variables --------------------------------------------------------------------------------------------------------------------------------------------------------
-im = Image.open("amazon 2.jpg")
+imag = "amazon 2"
+sortImg = "jpg"
+im = Image.open(imag + "." + sortImg)
 im = resizeImage(im)
 pix = im.load()
 x,y = 0,0
@@ -31,7 +33,7 @@ print("size : " + str(im.size))
 print("width : " + str(width))
 print("height : " + str(height))
 print("length : " + str(length))
-sleep(5)
+sleep(1)
 
 for i in range(0,length):
 	print("x : " + str(x) + " y : " + str(y) + " i : " + str(i))
@@ -49,5 +51,5 @@ for i in range(0,length):
 		x = 0
 		y = y + 1
 
-im.save("new5.png")
-print "saved"
+im.save(imag + " (processed)." +sortImg)
+print "saved as " + imag + " (processed)." +sortImg
