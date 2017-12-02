@@ -1,6 +1,9 @@
 import the camera:
-  `from picamera import PiCamera`
+    from picamera import PiCamera
+    
 import the wait function:
-  `from time import sleep`
-import the sense hat
-  `from sense_hat import SenseHat`
+    from time import sleep
+    
+import the sense hat*:
+    from sense_hat import SenseHat
+*If you work with the sense emulator. Just change "from sense_hat" to "from sense_emu".
