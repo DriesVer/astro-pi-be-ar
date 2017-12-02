@@ -1,1 +1,37 @@
 Pi Camera:       (normal camera and NoIR camera)
+    camera.start_preview()
+    camera.stop_preview
+    camera.capture("name.jpg")
+    camera.start_recording("name.h264")
+    camera.wait_recording(60)
+    camera.stop_recording()
+    
+Sense Hat:
+    LED matrix
+        sense.show_message("HelloWorld",text_colour = (255, 0, 0))
+        sense.set_pixel(x,y,colour)         #colour = (255,255,255)
+        sense.set_rotation(180)
+        sense.clear()
+        sense.set_pixels(question_mark)     #programing before this line:
+                                                r = (255, 0, 0)
+                                                w = (255, 255, 255)
+                                                question_mark = [
+                                                w, w, w, r, r, w, w, w,
+                                                w, w, r, w, w, r, w, w,
+                                                w, w, w, w, w, r, w, w,
+                                                w, w, w, w, r, w, w, w,
+                                                w, w, w, r, w, w, w, w,
+                                                w, w, w, r, w, w, w, w,
+                                                w, w, w, w, w, w, w, w,
+                                                w, w, w, r, w, w, w, w
+                                                ]
+    Environment Sensors:
+        sense.humidity
+        sense.temperature
+        sense.pressure
+    Movement Sensors:
+        sense.orientation
+        sense.gyroscope_raw
+        sense.compass_raw
+        sense.accelerometer_raw
+        
