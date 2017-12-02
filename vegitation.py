@@ -4,11 +4,11 @@ from time import sleep
 
 #define functions -----------------------------------------------------------------------------------------------------------------------------------------------------
 def resizeImage(img):
-	#size = 200,200
+	size = 200,200
 	state = True
 	w,h = img.size
 	while state:
-		if img.size>(250,250):
+		if img.size>size:
 			w, h = w/2, h/2
 			newSize = w,h
 			img = img.resize(newSize, Image.ANTIALIAS)
