@@ -14,8 +14,8 @@ Pi Camera:       (normal camera and NoIR camera)
     camera.exposure_compensation = 0
     camera.exposure_mode = 'auto'
     camera.meter_mode = 'average'
-    camera.awb_mode = 'auto'
-    camera.image_effect = 'none'
+    camera.awb_mode = 'auto'                'auto','cloud',flash'
+    camera.image_effect = 'none'            'cartoon','emboss','film','gpen','hatch','negative','oilpaint','posterise','sketch'
     camera.color_effects = None
     camera.rotation = 0
     camera.hflip = False
