@@ -1,6 +1,6 @@
 Pi Camera:       (normal camera and NoIR camera)
     camera.start_preview()
-    camera.stop_preview
+    camera.stop_preview()
     camera.capture("name.jpg")
     camera.start_recording("name.h264")
     camera.wait_recording(60)
