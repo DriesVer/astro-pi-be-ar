@@ -1,6 +1,8 @@
 #import libraries -----------------------------------------------------------------------------------------------------------------------------------------------------
 from PIL import Image
 from time import sleep
+from picamera import PiCamera
+from sense_hat import SenseHat
 
 #define functions -----------------------------------------------------------------------------------------------------------------------------------------------------
 def resizeImage(img):
@@ -17,14 +19,19 @@ def resizeImage(img):
 	return img;
 
 #set variables --------------------------------------------------------------------------------------------------------------------------------------------------------
-imag = "amazon 2"
+camera = PiCamera()
+#sense = SenseHat()
+
+imag = "sateliet"
 sortImg = "jpg"
 im = Image.open(imag + "." + sortImg)
 im = resizeImage(im)
 pix = im.load()
+
 x,y = 0,0
 width, height = im.size
 length = (width*height)-1
+
 green = (0,255,0)
 blue = (0,0,255)
 
