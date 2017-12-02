@@ -1,0 +1,6 @@
+import the camera:
+  `from picamera import PiCamera`
+import the wait function:
+  `from time import sleep`
+import the sense hat
+  `from sense_hat import SenseHat`
