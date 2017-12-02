@@ -1,9 +1,15 @@
 import the camera:
     from picamera import PiCamera
+    camera = PiCamera()
     
 import the wait function:
     from time import sleep
     
 import the sense hat*:
     from sense_hat import SenseHat
+    sense = SenseHat()
 *If you work with the sense emulator. Just change "from sense_hat" to "from sense_emu".
+
+import the image library:
+    from PIL import Image
+    im = Image.open("name.jpg")
