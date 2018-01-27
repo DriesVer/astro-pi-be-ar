@@ -67,3 +67,4 @@ for i in range(0,length):
 im.save(imag + " (processed)." +sortImg)
 print "saved as " + imag + " (processed)." +sortImg
 camera.stop_preview()
+
