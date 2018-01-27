@@ -13,3 +13,4 @@ import the sense hat*:
 import the image library:
     from PIL import Image
     im = Image.open("name.jpg")
+
