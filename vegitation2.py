@@ -73,3 +73,4 @@ for i in range(0,length):
 im.save(witchImg + " (processed)." +sortImg)
 print "saved as " + witchImg + " (processed)." +sortImg
 #os.remove(witchImg)
+
