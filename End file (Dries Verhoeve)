@@ -3,6 +3,7 @@ from PIL import Image
 from time import sleep
 from picamera import PiCamera
 from sense_hat import SenseHat
+import os
 
 #define functions -----------------------------------------------------------------------------------------------------------------------------------------------------
 def resizeImage(img):
@@ -25,12 +26,13 @@ sense = SenseHat()
 camera.start_preview()
 camera.vflip = True
 
-imag = "amazon 2"
+imag = "process"
 sortImg = "jpg"
 camera.capture(imag + "." + sortImg)
 
-im = Image.open(imag + "." + sortImg)
+im = Image.open(imag + "." + sortImg))
 im = resizeImage(im)
+os.remove(imag + "." + sortImg)
 pix = im.load()
 
 x,y = 0,0
