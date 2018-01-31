@@ -2,7 +2,7 @@
 from PIL import Image			#Library for examining the picture.
 from time import sleep			#Library for using wait functions.
 from picamera import PiCamera		#Library for using the camera.
-from sense_hat import SenseHat	#Library for using the Sense Hat.
+from sense_hat import SenseHat		#Library for using the Sense Hat.
 import os					#Library for controlling the operating system.
 
 #Define functions ----------------------------------------------------------------------------------------------------------------------------------
