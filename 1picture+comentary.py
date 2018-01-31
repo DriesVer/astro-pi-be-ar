@@ -1,4 +1,4 @@
-Import libraries ------------------------------------------------------------------------------------------------------------------------------
+#Import libraries ------------------------------------------------------------------------------------------------------------------------------
 from PIL import Image			#Library for examining the picture.
 from time import sleep			#Library for using wait functions.
 from picamera import PiCamera		#Library for using the camera.
