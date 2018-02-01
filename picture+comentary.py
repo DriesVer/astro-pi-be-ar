@@ -1,9 +1,8 @@
 #Import libraries ------------------------------------------------------------------------------------------------------------------------------
-from PIL import Image			#Library for examining the picture.
-from time import sleep			#Library for using wait functions.
+from PIL import Image			#Library for examining the picture.			sudo apt-get install python-PIL
+import time				#Library for using wait functions and get the time.
 from picamera import PiCamera		#Library for using the camera.
 from sense_hat import SenseHat		#Library for using the Sense Hat.
-import os				#Library for controlling the operating system.
 
 #Define functions ----------------------------------------------------------------------------------------------------------------------------------
 def resizeImage(img):							#Functions ask after an image.
