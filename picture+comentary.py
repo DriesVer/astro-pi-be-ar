@@ -1,9 +1,9 @@
 #Import libraries ------------------------------------------------------------------------------------------------------------------------------
 from PIL import Image			#Library for examining the picture.			sudo apt-get install python-PIL
-import time				#Library for using wait functions and get the time.
 from picamera import PiCamera		#Library for using the camera.
 from sense_hat import SenseHat		#Library for using the Sense Hat.
-
+import time				#Library for using wait functions and get the time.
+import csv				#Library for writing CSV-files.
 #Define functions ----------------------------------------------------------------------------------------------------------------------------------
 def resizeImage(img):							#Functions ask after an image.
 	maxSize = 300,300						#Max size of the image in width and height
@@ -19,38 +19,48 @@ def resizeImage(img):							#Functions ask after an image.
 	return img;							#The resized image wil be returned
 
 #set variables and objects -----------------------------------------------------------------------------------------------------------------
-camera = PiCamera()				#Set the object camera for later use of the camera.
-sense = SenseHat()				#Set the object sebse for later use of the Sense Hat.
+camera = PiCamera()					#Set the object camera for later use of the camera.
+sense = SenseHat()					#Set the object sebse for later use of the Sense Hat.
 
-green = (0,255,0)				#Setting colors for easy use later in the script.
+green = (0,255,0)					#Setting colors for easy use later in the script.
 blue = (0,0,255)
 white = (255,255,255)
 black = (0,0,0)
 red = (255,0,0)
 
-imgBase = "VegCam_"				#Name of the picture
-imgNumb = 1					#Nummber of the picture
-imgSort = ".jpg"				#Sort of Image
+imgBase = "VegCam_"					#Name of the picture
+imgNumb = 1						#Nummber of the picture
+imgSort = ".jpg"					#Sort of Image
 
-x,y = 0,0					#Setting start coordinate examination of the picture
+x,y = 0,0						#Setting start coordinate examination of the picture
 
-countG = 0					#Setting counting variables for counting how many of that specific color has been found in the picture.
+countG = 0						#Setting counting variables for counting how many of that specific color has been found in the picture.
 countB = 0
 countW = 0
 
-display = [ ]					#Name of list of colors that wil be displayed on the Sense Hat
+display = [ ]						#Name of list of colors that wil be displayed on the Sense Hat
 
-timeStart = 			#The time on the moment when the script starts.
+timeStart = time.ctime()				#The time on the moment when the script starts.
+
+with open("trackingTime.csv", "wb") as csvfile:		#Open a new CSV-file with the start time
+	w = csv.writer(csvfile)				#Setting w as a CSV-writer
+	w.writerow(["Start time: " + timeStart])	#Write in the CSV-file the starttime
+	w.writerow([])					#Write an enter.
 
 #start script-------------------------------------------------------------------------------------------------------------------------------------
 
 camera.start_preview()						#Starting the camera.
 
 while(True):
-	camera.capture(imgBase + str(imgNumb) + imgSort)	#Capturing a picture of space.
+	imgName = imgBase + str(imgNumb) + imgSort		#Setting the image name.
+	camera.capture(imgName)					#Capturing a picture of space.
+	timeNow = time.ctime()					#Getting the tile on the current moment.
+	with open("trackingTime.csv", "a") as csvfile:		#Opening again the CSV-file.
+		w = csv.writer(csvfile)				#Setting w as a CSV-writer
+		w.writerow([timeNow + "  ||  " + imgName])	#Writing the time and the name in the CSV-file.
 	sense.set_pixel(7,7,red)				#Setting a pixel int he corner red for indicating that he capture it. Also for showing that he isn't blocked.
 
-	im = Image.open(imgBase + str(imgNumb) + imgSort)	#Open the image that is captured.
+	im = Image.open(imgName)				#Open the image that is captured.
 	im = resizeImage(im)					#Resizing the picture in a function. (See functions for explenation.
 	pix = im.load()						#Load the pixels in from the image.
 
@@ -104,8 +114,6 @@ while(True):
 	for i in range(0, 64-sense_colors):				#Adding black leds to display for that the length of display equals 64. (For no erors.)
 		display.append(black)
 	sense.set_pixels(display)					#Setting the display on the screen.
-	
-	timeNow = ##Hier de waarde van de tijd op dit moment.##		#Getting the tile on the current moment.
 	
 	imgNumb = imgNumb + 1						#Chaching the image number with 1
 
