@@ -44,7 +44,7 @@ timeStart = 			#The time on the moment when the script starts.
 
 #start script-------------------------------------------------------------------------------------------------------------------------------------
 
-camera.start_preview()					#Starting the camera.
+camera.start_preview()						#Starting the camera.
 
 while(True):
 	camera.capture(imgBase + str(imgNumb) + imgSort)	#Capturing a picture of space.
@@ -64,25 +64,25 @@ while(True):
 	"""
 	for i in range(0,length):
 		#print("x : " + str(x) + " y : " + str(y) + " i : " + str(i))	#Was printing the position of the pixel.
-		#print(pix[x,y])									#Was printing the color of the pixel.
-		valueR, valueG, valueB = pix[x,y]						#Setting the RGB-values of the pixel to 3 seperate variables.
+		#print(pix[x,y])						#Was printing the color of the pixel.
+		valueR, valueG, valueB = pix[x,y]				#Setting the RGB-values of the pixel to 3 seperate variables.
 	
-		if valueG > valueB and valueR<100:						#Cheking of the pixel is green.
-			pix[x,y] = green								#If green he sets the pixel to pure green.
-			countG = countG + 1							#Add to the counter of green 1.
-		if valueB > valueG and valueR>100:						#Cheking of the pixel is blue.
-			pix[x,y] = blue								#If blue he sets the pixel to pure blue.
-			countB = countB + 1							#Add to the counter of blue 1.
-		if valueR>220 and valueG>220 and valueB>220:				#Same as above but for white.
+		if valueG > valueB and valueR<100:				#Cheking of the pixel is green.
+			pix[x,y] = green					#If green he sets the pixel to pure green.
+			countG = countG + 1					#Add to the counter of green 1.
+		if valueB > valueG and valueR>100:				#Cheking of the pixel is blue.
+			pix[x,y] = blue						#If blue he sets the pixel to pure blue.
+			countB = countB + 1					#Add to the counter of blue 1.
+		if valueR>220 and valueG>220 and valueB>220:			#Same as above but for white.
 			pix[x,y] = white								
 			countW = countW + 1							
-		if valueR<20 and valueG<20 and valueB<20:					#Same as above but for black. Black isn't counted because the counting is for the display and black don't shine.
+		if valueR<20 and valueG<20 and valueB<20:			#Same as above but for black. Black isn't counted because the counting is for the display and black don't shine.
 			pix[x,y] = black								
 		
 		
-		if x<width-1:									#Setting the coordinates for the next pixel in the row.
+		if x<width-1:							#Setting the coordinates for the next pixel in the row.
 			x = x + 1
-		else:											#If he is at the end of the row he gos to the next row.
+		else:								#If he is at the end of the row he gos to the next row.
 			x = 0
 			y = y + 1
 
