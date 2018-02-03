@@ -18,7 +18,7 @@ def resizeImage(img):							#Functions ask after an image.
 			state = False					#If the image is the right size, state wil be false and the wile loop stops.
 	return img;							#The resized image wil be returned
 
-#set variables and objects -----------------------------------------------------------------------------------------------------------------
+#set variables and objects (that don't change during the scipt) -------------------------------------------------------------------------------------
 camera = PiCamera()					#Set the object camera for later use of the camera.
 sense = SenseHat()					#Set the object sebse for later use of the Sense Hat.
 
@@ -36,8 +36,6 @@ countG = 0						#Setting counting variables for counting how many of that specif
 countB = 0
 countW = 0
 
-display = [ ]						#Name of list of colors that wil be displayed on the Sense Hat
-
 timeStart = time.ctime()				#The time on the moment when the script starts.
 
 with open("trackingTime.csv", "wb") as csvfile:		#Open a new CSV-file with the start time
@@ -50,8 +48,11 @@ with open("trackingTime.csv", "wb") as csvfile:		#Open a new CSV-file with the s
 camera.start_preview()						#Starting the camera.
 
 while(True):
-	x,y = 0,0						#Setting start coordinate examination of the picture
+	#Variables that change in the script.
+	x,y = 0,0						#Setting start coordinate examination of the picture.
+	display = [ ]						#Name of list of colors that wil be displayed on the Sense Hat.
 	imgName = imgBase + str(imgNumb) + imgSort		#Setting the image name.
+	
 	camera.capture(imgName)					#Capturing a picture of space.
 	timeNow = time.ctime()					#Getting the tile on the current moment.
 	with open("trackingTime.csv", "a") as csvfile:		#Opening again the CSV-file.
