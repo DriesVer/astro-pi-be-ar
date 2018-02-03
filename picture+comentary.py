@@ -118,7 +118,7 @@ while(True):
 		sense.set_pixels(display)				#Setting the display on the screen.
 	except Exception as ex:						#If the length of display not equals 64
 		with open("trackingTime.csv" , "a") as w:
-			w.write("   || Rounding error")
+			w.write("  || Rounding error")
 	
 	imgNumb = imgNumb + 1						#Chaching the image number with 1
 
