@@ -32,10 +32,6 @@ imgBase = "VegCam_"					#Name of the picture
 imgNumb = 1						#Nummber of the picture
 imgSort = ".jpg"					#Sort of Image
 
-countG = 0						#Setting counting variables for counting how many of that specific color has been found in the picture.
-countB = 0
-countW = 0
-
 timeStart = time.ctime()				#The time on the moment when the script starts.
 
 with open("trackingTime.csv", "wb") as csvfile:		#Open a new CSV-file with the start time
@@ -51,8 +47,12 @@ while(True):
 	#Variables that change in the script.
 	x,y = 0,0						#Setting start coordinate examination of the picture.
 	display = [ ]						#Name of list of colors that wil be displayed on the Sense Hat.
+	countG = 0						#Setting counting variables for counting how many of that specific color has been found in the picture.
+	countB = 0
+	countW = 0
 	imgName = imgBase + str(imgNumb) + imgSort		#Setting the image name.
 	
+	#Code that runs.
 	camera.capture(imgName)					#Capturing a picture of space.
 	timeNow = time.ctime()					#Getting the tile on the current moment.
 	with open("trackingTime.csv", "a") as csvfile:		#Opening again the CSV-file.
@@ -76,20 +76,21 @@ while(True):
 		#print("x : " + str(x) + " y : " + str(y) + " i : " + str(i))	#Was printing the position of the pixel.
 		#print(pix[x,y])						#Was printing the color of the pixel.
 		valueR, valueG, valueB = pix[x,y]				#Setting the RGB-values of the pixel to 3 seperate variables.
-	
-		if valueG > valueB and valueR<100:				#Cheking of the pixel is green.
-			pix[x,y] = green					#If green he sets the pixel to pure green.
-			countG = countG + 1					#Add to the counter of green 1.
-		if valueB > valueG and valueR>100:				#Cheking of the pixel is blue.
-			pix[x,y] = blue						#If blue he sets the pixel to pure blue.
-			countB = countB + 1					#Add to the counter of blue 1.
-		if valueR>220 and valueG>220 and valueB>220:			#Same as above but for white.
-			pix[x,y] = white								
-			countW = countW + 1							
-		if valueR<20 and valueG<20 and valueB<20:			#Same as above but for black. Black isn't counted because the counting is for the display and black don't shine.
-			pix[x,y] = black								
 		
 		
+		if valueR<20 and valueG<20 and valueB<20:			#Same as below but for black. Black isn't counted because the counting is for the display and black don't shine.
+			pix[x,y] = black
+		else:								#If it's not black.
+			if valueR>220 and valueG>220 and valueB>220:		#Cheking of the pixel is white.
+				pix[x,y] = white				#If it's white he sets the pixel to pure white.
+				countW = countW + 1				#Adding to the counter of white 1.
+			else:							#If it's not white.
+				if valueG > valueB and valueR<100:		#Same as above but for green.
+					pix[x,y] = green			
+					countG = countG + 1			
+				if valueB > valueG and valueR>100:		#Same as above but for blue.
+					pix[x,y] = blue				
+					countB = countB + 1
 		if x<width-1:							#Setting the coordinates for the next pixel in the row.
 			x = x + 1
 		else:								#If he is at the end of the row he gos to the next row.
@@ -113,7 +114,11 @@ while(True):
 	sense_colors = len(display)					#Getting the length of the list display with the colors.
 	for i in range(0, 64-sense_colors):				#Adding black leds to display for that the length of display equals 64. (For no erors.)
 		display.append(black)
-	sense.set_pixels(display)					#Setting the display on the screen.
+	try:								#If the length of display equals 64
+		sense.set_pixels(display)				#Setting the display on the screen.
+	except Exception as ex:						#If the length of display not equals 64
+		with open("trackingTime.csv" , "a") as w:
+			w.write("   || Rounding error")
 	
 	imgNumb = imgNumb + 1						#Chaching the image number with 1
 
