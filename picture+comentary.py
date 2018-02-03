@@ -41,7 +41,7 @@ with open("trackingTime.csv", "wb") as csvfile:		#Open a new CSV-file with the s
 
 #start script-------------------------------------------------------------------------------------------------------------------------------------
 
-camera.start_preview()						#Starting the camera.
+#camera.start_preview()						#Was starting the camera.
 
 while(True):
 	#Variables that change in the script.
@@ -122,4 +122,4 @@ while(True):
 	
 	imgNumb = imgNumb + 1						#Chaching the image number with 1
 
-camera.stop_preview()							#Stopping the camera.
+#camera.stop_preview()							#Was stopping the camera.
