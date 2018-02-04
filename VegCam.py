@@ -121,5 +121,13 @@ while(True):
 			w.write("  || Rounding error")
 	
 	imgNumb = imgNumb + 1						#Chaching the image number with 1
-
+	
+	for i in range(0,5000):
+		print "waiting"
+	sense.set_pixel(7,7,red)					#Setting a pixel int he corner red for indicating that he capture it. Also for showing that he isn't blocked.
+	for i in range(0,5000):
+		print "waiting"
+	sense.set_pixel(7,7,black)					#Setting a pixel int he corner black for indicating that he capture it. Also for showing that he isn't blocked.
+	
+	
 #camera.stop_preview()							#Was stopping the camera.
