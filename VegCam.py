@@ -122,14 +122,14 @@ while(True):
 	
 	imgNumb = imgNumb + 1						#Chaching the image number with 1
 	
-	"""
-	for i in range(0,40000):
-		print "waiting"
+	"""								#Set this out of commentary for subside the saved data. (From 4.5 GB to 2 GB.) (Do the three " away.
+	for i in range(0,40000):					#A loop because the if you set time.sleep() than the sense display goes off and with this way he staies on.
+		print "waiting"						#We use the terminal for printing because the terminal is slow.
 	sense.set_pixel(7,7,red)					#Setting a pixel int he corner red for indicating that he capture it. Also for showing that he isn't blocked.
-	for i in range(0,40000):
+	for i in range(0,40000):					#Same as above.
 		print "waiting"
-	sense.set_pixel(7,7,black)					#Setting a pixel int he corner black for indicating that he capture it. Also for showing that he isn't blocked.
-	"""					#
+	sense.set_pixel(7,7,black)
+	"""								#Dot the 3 " away for getting it out of commentary.
 	
 	
 #camera.stop_preview()							#Was stopping the camera.
